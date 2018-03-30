@@ -82,7 +82,7 @@ DOCKERIMAGENAME_NOTARYSERVER=vmware/notary-server-photon
 
 DOCKERFILEPATH_REDIS=$(DOCKERFILEPATH)/redis
 DOCKERFILENAME_REDIS=Dockerfile
-DOCKERIMAGENAME_MARIADB=vmware/redis-photon
+DOCKERIMAGENAME_REDIS=vmware/redis-photon
 
 _build_db: _build_mariadb
 	@echo "modify the db dockerfile..."
@@ -173,7 +173,7 @@ _build_mariadb:
 
 _build_redis:
     @echo "building redis container for photon..."
-	@cd $(DOCKERFILEPATH_REDIS) && $(DOCKERBUILD) -f $(DOCKERFILEPATH_REDIS)/$(DOCKERFILENAME_REDIS) -t $(DOCKERIMAGENAME_MARIADB):$(REDISVERSION) .
+	@cd $(DOCKERFILEPATH_REDIS) && $(DOCKERBUILD) -f $(DOCKERFILEPATH_REDIS)/$(DOCKERFILENAME_REDIS) -t $(DOCKERIMAGENAME_REDIS):$(REDISVERSION) .
 	@echo "Done."
 
 define _get_binary
