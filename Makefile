@@ -103,6 +103,7 @@ MARIADBVERSION=$(VERSIONTAG)
 CLAIRVERSION=v2.0.1
 CLAIRDBVERSION=$(VERSIONTAG)
 MIGRATORVERSION=1.4
+REDISVERSION=$(VERSIONTAG)
 
 #clarity parameters
 CLARITYIMAGE=vmware/harbor-clarity-ui-builder[:tag]
@@ -294,6 +295,7 @@ modify_composefile: modify_composefile_notary modify_composefile_clair
 	@$(SEDCMD) -i 's/__reg_version__/$(REGISTRYVERSION)-$(VERSIONTAG)/g' $(DOCKERCOMPOSEFILEPATH)/ha/$(DOCKERCOMPOSEFILENAME)
 	@$(SEDCMD) -i 's/__nginx_version__/$(NGINXVERSION)/g' $(DOCKERCOMPOSEFILEPATH)/$(DOCKERCOMPOSEFILENAME)
 	@$(SEDCMD) -i 's/__nginx_version__/$(NGINXVERSION)/g' $(DOCKERCOMPOSEFILEPATH)/ha/$(DOCKERCOMPOSEFILENAME)
+	@$(SEDCMD) -i 's/__redis_version__/$(REDISVERSION)/g' $(DOCKERCOMPOSEFILEPATH)/$(DOCKERCOMPOSEFILENAME)
 
 modify_composefile_notary:
 	@echo "preparing docker-compose notary file..."
